@@ -31,18 +31,22 @@ with open('lista-de-emails.txt','w') as arquivo:#CRIANDO O ARQUIVO TXT PARA SALV
         emails = re.findall('\w+@\w+\.{1}\w+', html_source)
 
         for email in emails:
-            if email == '0252655a41544fd28ae41f8b8ff36917@sentry.indeed':
+            if email in lista:
                 pass
+            
+            elif email == '0252655a41544fd28ae41f8b8ff36917@sentry.indeed':
+                pass
+            
             else:
-                
+                lista.append(email)
                 print(email)
                 print(email,file=arquivo)
 
         x = x+10
-        
+valor = len(list)        
 print('')
 print('')
-print('Lista de emails capturada e salva...')
+print(f'{valor} emails capturados e salvos...')
 time.sleep(2)
 print('')
 
@@ -52,12 +56,6 @@ print('')
 
 #NÃO ESQUEÇA DE ATIVAR 'AUTORIZAR PROGRAMAS MENOS SEGUROS' NA SUA CONTA GMAIL!
 #O GMAIL SÓ AUTORIZA 500 EMAILS POR DIA...NÃO ABUSE!
-
-lista = []
-
-with open('lista-de-emails.txt','r') as arquivo:
-    for linha in arquivo:
-        lista.append(linha)
 
 with open('curriculo.txt','r',encoding='utf-8') as arquivo2:
     curriculo = arquivo2.read()
@@ -70,7 +68,7 @@ print('.')
 print('.')
 print('')
 
-for i in range(1, 499):#QUANTIDADE DE EMAILS A ENVIAR
+for i in range(1, valor):#QUANTIDADE DE EMAILS A ENVIAR
     fromaddr = "seuemail@gmail.com"#INSIRA SEU EMAIL AQUI
     toaddr = lista[i]
     msg = MIMEMultipart()
@@ -89,7 +87,7 @@ for i in range(1, 499):#QUANTIDADE DE EMAILS A ENVIAR
     s.sendmail(fromaddr, toaddr, text)
     s.quit()
 
-    print(f'Email {i}/499 enviado com sucesso!')
+    print(f'Email {i}/{valor} enviado com sucesso!')
     #time.sleep(30)
             
 print('')
