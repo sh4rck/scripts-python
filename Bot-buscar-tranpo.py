@@ -14,8 +14,6 @@ print('Acessando site INDEED vagas de emprego...')
 time.sleep(3)
 print('')
 
-
-
 print('Iniciando captura de emails...')
 print('')
 print('')
@@ -64,7 +62,6 @@ with open('lista-de-emails.txt','r') as arquivo:
 with open('curriculo.txt','r',encoding='utf-8') as arquivo2:
     curriculo = arquivo2.read()
 
-
 print('Iniciando o envio de emails para empresas...')
 time.sleep(2)
 print('')
@@ -94,7 +91,6 @@ for i in range(1, 499):#QUANTIDADE DE EMAILS A ENVIAR
 
     print(f'Email {i}/499 enviado com sucesso!')
     #time.sleep(30)
-
             
 print('')
 print('.')
