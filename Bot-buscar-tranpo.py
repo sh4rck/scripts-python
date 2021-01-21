@@ -74,7 +74,7 @@ print('.')
 print('')
 
 for i in range(1, 499):	
-    fromaddr = "profissionalmdt@gmail.com"
+    fromaddr = "seuemail@gmail.com"
     toaddr = lista[i]
     msg = MIMEMultipart()
     msg['From'] = fromaddr
@@ -87,7 +87,7 @@ for i in range(1, 499):
 
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
-    s.login(fromaddr, "sh4rcktruelove666")
+    s.login(fromaddr, "senha-do-seu-gmail")
     text = msg.as_string()
     s.sendmail(fromaddr, toaddr, text)
     s.quit()
