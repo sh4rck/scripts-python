@@ -19,6 +19,7 @@ print('')
 print('')
 
 x = 0
+lista = []
 
 with open('lista-de-emails.txt','w') as arquivo:#CRIANDO O ARQUIVO TXT PARA SALVAR OS EMAILS
     
@@ -43,7 +44,8 @@ with open('lista-de-emails.txt','w') as arquivo:#CRIANDO O ARQUIVO TXT PARA SALV
                 print(email,file=arquivo)
 
         x = x+10
-valor = len(list)        
+        
+valor = len(lista)        
 print('')
 print('')
 print(f'{valor} emails capturados e salvos...')
