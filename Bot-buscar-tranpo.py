@@ -22,9 +22,9 @@ print('')
 
 x = 0
 
-with open('lista-de-emails.txt','w') as arquivo:
+with open('lista-de-emails.txt','w') as arquivo:#CRIANDO O ARQUIVO TXT PARA SALVAR OS EMAILS
     
-    for i in range(0,51):
+    for i in range(0,51):#QUANTIDADE DE PAGINAS A PERCORRER
         url = (f"https://br.indeed.com/empregos?q=E+Mail+Para+Curriculo&l=Nova+Odessa,+SP&fromage=last&start={x}")
 
         html_page = requests.get(url)
@@ -73,8 +73,8 @@ print('.')
 print('.')
 print('')
 
-for i in range(1, 499):	
-    fromaddr = "seuemail@gmail.com"
+for i in range(1, 499):#QUANTIDADE DE EMAILS A ENVIAR
+    fromaddr = "seuemail@gmail.com"#INSIRA SEU EMAIL AQUI
     toaddr = lista[i]
     msg = MIMEMultipart()
     msg['From'] = fromaddr
@@ -87,7 +87,7 @@ for i in range(1, 499):
 
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
-    s.login(fromaddr, "senha-do-seu-gmail")
+    s.login(fromaddr, "senha-do-seu-gmail")#INSIRA A SENHA DO SEU GMAIL AQUI
     text = msg.as_string()
     s.sendmail(fromaddr, toaddr, text)
     s.quit()
