@@ -1,0 +1,46 @@
+
+from selenium import webdriver
+import time
+
+                          
+class WhatsappBot:
+    def __init__(self):
+        # Parte 1 - A mensagem que você quer enviar
+        self.mensagem = ('SUA MENSAGEM AQUI')
+        #Parte 2 - Nome dos grupos ou pessoas a quem você deseja enviar a mensagem
+        self.grupos_ou_pessoas = ["NOME DO CONTATO OU GRUPO AQUI"]#Separado por virgula.
+        self.driver = webdriver.Chrome(executable_path=r'./chromedriver.exe')
+        
+    def EnviarMensagens(self):
+        print('Abrindo site Whatsappweb...')
+        self.driver.get('https://web.whatsapp.com')
+        time.sleep(30)
+        for grupo_ou_pessoa in self.grupos_ou_pessoas:
+            campo_grupo = self.driver.find_element_by_xpath(f"//span[@title='{grupo_ou_pessoa}']")
+            campo_grupo.click()
+            time.sleep(5)
+            
+            chat_box = self.driver.find_element_by_class_name('DuUXI')#_2HE1Z _1hRBM
+            chat_box.click()
+            time.sleep(5)
+            print('Enviando a mensagem...')
+            chat_box.send_keys(self.mensagem)
+            time.sleep(5)
+            
+            botao_enviar = self.driver.find_element_by_xpath("//span[@data-icon='send']")
+            botao_enviar.click()
+            time.sleep(2)
+
+            print('.')
+            print('.')
+            print('.')
+            print('')
+            print('Mensagem enviada com sucesso!')
+            
+print('')
+print('')
+print('')
+print('Iniciando automação...')
+print('')
+bot = WhatsappBot()
+bot.EnviarMensagens()
