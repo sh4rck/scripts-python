@@ -1,0 +1,42 @@
+
+from wordpress_xmlrpc import Client
+from wordpress_xmlrpc.methods import posts
+from wordpress_xmlrpc import WordPressPost
+import time
+
+#INSTALE O PLUGIN 'Manage XML-RPC' EM SEU WORDPRESS E ATIVE-O!
+
+print('Automação iniciada! Aguarde...')
+print('')
+print('.')
+print('.')
+print('.')
+print('')
+
+print('Inciando postagem...')
+time.sleep(3)
+
+TITULO = 'FIREFOX O MELHOR NAVEGADOR'
+TEXTO = '<img src="https://www.muraldecal.com/en/img/orp042-jpg/folder/products-listado-merchant/stickers-mozilla-firefox-logo.jpg" />Comece a navegar, e iremos mostrar-lhe alguns dos ótimos artigos, vídeos, e outras páginas que visitou recentemente ou adicionou aos marcadores aqui.'
+
+your_blog = Client('https://www.seusite.com.br/xmlrpc.php', 'seu-user-aqui', 'sua-senha-aqui')
+
+myposts=your_blog.call(posts.GetPosts())
+        
+post = WordPressPost()
+post.title = TITULO
+post.slug= ''
+post.content = TEXTO
+post.id = your_blog.call(posts.NewPost(post))
+post.post_status = 'publish'
+your_blog.call(posts.EditPost(post.id, post))
+
+print('postagem concluída...')
+time.sleep(2)
+
+print('') 
+print('.')
+print('.')
+print('.')
+print('')
+print('Automação concluída com sucesso!')
